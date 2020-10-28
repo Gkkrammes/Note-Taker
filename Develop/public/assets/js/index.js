@@ -57,6 +57,7 @@ const handleNoteSave = function () {
   };
 
   saveNote(newNote).then(() => {
+    console.log(data);
     getAndRenderNotes();
     renderActiveNote();
   });
@@ -85,7 +86,7 @@ const handleNoteView = function () {
   renderActiveNote();
 };
 
-// Sets the activeNote to and empty object and allows the user to enter a new note
+// Sets the activeNote to an empty object and allows the user to enter a new note
 const handleNewNoteView = function () {
   activeNote = {};
   renderActiveNote();
