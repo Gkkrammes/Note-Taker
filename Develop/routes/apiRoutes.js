@@ -2,41 +2,18 @@ const notesData = require('../db/db.json');
 const fs = require('fs');
 const path = require('path');
 
-module.exports = function (app) {
+module.exports = (app) => {
 
-    app.get('/api/notes', function(req, res) {
+    app.get('/api/notes',  (req, res) => {
         res.json(notesData);
     });
 
-    app.post('/api/notes', function(req,res)  {
-        const notes = req.body;
-
-        if (notesData.length === 0) {
-            notes.id = 0
-        }
-        else {
-            notes.id = notesData[notesData.length - 1].id + 1
-        }
-
-        fs.readFile(path.join(_dirname, '../db/db.json'), 'utf8', function (error, notesData) {
-
-            const json = JSON.parse(notesData)
-            json.push(notes)
-
-            fs.writeFile(path.join(_dirname, '../db/db.json'), JSON.stringify(json), 'utf8', function (error) {
-                if (error) {
-                    console.log(error)
-                }
-                console.log('success')
-            }
-            )
-        }
-        );
-        notesData.push(notes);
+    app.post('/api/notes', (req,res)  => {
+        notesData.push(req.body);
         res.json(true);
     });
-    
-    app.delete('/api/notes/:id', function(req,res)  {
+
+    app.delete('/api/notes/:id', (req,res) => {
         var deleteID = req.params.id
         let note = notesData.filter(note => {
             return note.id == deleteID; 

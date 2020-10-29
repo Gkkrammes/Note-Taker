@@ -2,6 +2,11 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  
+}
+
+.navbar {
+  background-color: #875bc2 !important;
 }
 
 .save-note {
@@ -16,7 +21,7 @@ html, body {
 }
 
 .note-textarea, .note-title {
-  color: #000000;
+  color: #4a2391 !important;
   width: 100%;
   outline: none;
   border: none;
@@ -35,7 +40,7 @@ html, body {
 }
 
 .note-title:read-only, .note-textarea:read-only {
-  color: #757575;
+  color: #875bc2 !important;
 }
 
 .list-container .card {
